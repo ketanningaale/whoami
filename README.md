@@ -1,36 +1,147 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# whoami — Ketann Ingaale's Terminal Portfolio
+
+A terminal/CLI-themed personal portfolio built with **Next.js**, **TypeScript**, **Tailwind CSS v4**, and **Framer Motion**. Deployed on **Vercel**.
+
+**Live:** https://ketanningaale.vercel.app
+
+---
+
+## Features
+
+- **Terminal aesthetic** — retro-terminal visual metaphor with contemporary typography and spacing
+- **Boot sequence** — ASCII art initials + animated system boot lines on page load
+- **Typing animation** — `$ whoami` command types itself on first render
+- **Collapsible projects** — click any project row to expand full details with Framer Motion height animation
+- **3 colour themes** — toggle between Green, Amber, and White terminal palettes (CSS variable swap)
+- **Easter egg** — press `~` anywhere for hidden commands
+- **Hash navigation** — `/#projects`, `/#resume`, `/#about` all deep-link correctly
+- **Print stylesheet** — page renders cleanly as a résumé
+- **Reduced-motion** — all animations disabled when `prefers-reduced-motion: reduce` is set
+- **Full SEO** — OG image (Edge ImageResponse), robots.txt, sitemap.xml, structured metadata
+- **Responsive** — mobile-first layout, project table stacks to card blocks on small screens
+- **WCAG AA** contrast — #00ff88 green on #0a0a0a black passes AA at text sizes ≥ 14px
+
+---
+
+## Stack
+
+| Layer | Technology |
+|---|---|
+| Framework | Next.js 16 (App Router) |
+| Language | TypeScript 5 |
+| Styling | Tailwind CSS v4 (CSS-first config) |
+| Animation | Framer Motion 12 |
+| Icons | Lucide React |
+| Fonts | JetBrains Mono + Space Grotesk (via `next/font/google`) |
+| Deploy | Vercel |
+
+---
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+# Install dependencies
+npm install
+
+# Run dev server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# → http://localhost:3000
+
+# Production build
+npm run build
+npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+app/
+  globals.css          CSS variables, keyframes, print stylesheet
+  layout.tsx           Root layout — fonts, full SEO metadata
+  page.tsx             Main page — assembles all sections
+  robots.ts            /robots.txt
+  sitemap.ts           /sitemap.xml
+  opengraph-image.tsx  /opengraph-image (Edge runtime, 1200x630)
 
-## Learn More
+components/
+  BlinkingCursor.tsx   Animated cursor
+  TerminalPrompt.tsx   $ command heading with optional typing animation
+  ThemeToggle.tsx      GRN / AMB / WHT switcher (fixed top-right)
+  SectionReveal.tsx    Framer Motion scroll-reveal wrapper
+  BootSequence.tsx     Header — ASCII art + boot lines
+  WhoAmI.tsx           $ whoami section
+  ProjectEntry.tsx     Single expandable project row
+  ProjectList.tsx      $ ls -la /projects/ section
+  About.tsx            $ cat about.md section
+  Resume.tsx           $ cat resume.txt section
+  Footer.tsx           End prompt + social links
 
-To learn more about Next.js, take a look at the following resources:
+lib/
+  data.ts              All personal content (projects, experience, skills...)
+  constants.ts         Theme tokens, site config, animation timing
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Updating Content
 
-## Deploy on Vercel
+**All personal content lives in one file:** `lib/data.ts`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+personalInfo      name, bio, location, email, socials
+projects[]        all 6 projects with stack, links, status
+experience[]      work history with bullet points
+education[]       degrees with notes
+skills[]          skill groups
+recognitions[]    patents, papers, scholarships
+aboutParagraphs   the $ cat about.md text
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Edit `lib/data.ts` — nothing else needs to change.
+
+---
+
+## Deploying to Vercel
+
+1. Push this repo to GitHub
+2. Go to vercel.com/new and import the repo
+3. Framework preset auto-detects as **Next.js**
+4. No environment variables required
+5. After first deploy, update `SITE_CONFIG.url` in `lib/constants.ts` with your Vercel domain and redeploy
+
+---
+
+## Colour Palette
+
+| Variable | Value | Usage |
+|---|---|---|
+| `--bg` | `#0a0a0a` | Page background |
+| `--surface` | `#111111` | Card / panel backgrounds |
+| `--text` | `#e0e0e0` | Body text |
+| `--text-muted` | `#6b6b6b` | Secondary text, labels |
+| `--accent` | `#00ff88` | Commands, links, active states |
+| `--accent-secondary` | `#ffb800` | Highlights, warnings, role titles |
+| `--border` | `#1e1e1e` | Dividers, borders |
+
+Themes (toggled via CSS class on html element):
+- **Green** (default) — accent: #00ff88
+- **Amber** — accent: #ffb800
+- **White** — accent: #ffffff
+
+---
+
+## Keyboard Shortcuts
+
+| Key | Action |
+|---|---|
+| `~` or backtick | Toggle easter egg modal |
+| `Escape` | Close easter egg modal |
+| `Enter` / `Space` | Toggle project expansion (keyboard nav) |
+
+---
+
+## License
+
+MIT
