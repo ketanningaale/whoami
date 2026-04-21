@@ -48,6 +48,7 @@ export const viewport: Viewport = {
   colorScheme: "dark",
   width: "device-width",
   initialScale: 1,
+  viewportFit: "cover", // lets env(safe-area-inset-*) work on notched/rounded devices
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
