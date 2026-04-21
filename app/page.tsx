@@ -19,13 +19,13 @@ import RecommendationsPage from "@/components/RecommendationsPage";
 
 // ── Nav pages ─────────────────────────────────
 const NAV_PAGES: NavPage[] = [
-  { id: "home",       label: "01._HOME"       },
-  { id: "experience", label: "02._EXPERIENCE" },
-  { id: "projects",   label: "03._PROJECTS"   },
-  { id: "education",  label: "04._EDUCATION"  },
-  { id: "about",           label: "05._ABOUT"           },
-  { id: "resume",          label: "06._RESUME"          },
-  { id: "recommendations", label: "07._RECOMMENDATIONS" },
+  { id: "home",            label: "01._HOME",            short: "HOME"   },
+  { id: "experience",      label: "02._EXPERIENCE",      short: "EXP"    },
+  { id: "projects",        label: "03._PROJECTS",        short: "PROJ"   },
+  { id: "education",       label: "04._EDUCATION",       short: "EDU"    },
+  { id: "about",           label: "05._ABOUT",           short: "ABOUT"  },
+  { id: "resume",          label: "06._RESUME",          short: "RESUME" },
+  { id: "recommendations", label: "07._RECOMMENDATIONS", short: "RECS"   },
 ];
 const NAV_IDS = NAV_PAGES.map((p) => p.id);
 

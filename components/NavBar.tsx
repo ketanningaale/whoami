@@ -3,6 +3,7 @@
 export interface NavPage {
   id: string;
   label: string;
+  short?: string;
 }
 
 interface NavBarProps {
@@ -32,7 +33,12 @@ export default function NavBar({ pages, activeId, onNavigate }: NavBarProps) {
                 if (e.key === "Enter" || e.key === " ") onNavigate(p.id);
               }}
             >
-              {(isActive ? "> " : "  ") + p.label}
+              <span className="nav-label-full">
+                {(isActive ? "> " : "  ") + p.label}
+              </span>
+              <span className="nav-label-short">
+                {isActive ? "▸ " : ""}{p.short ?? p.label}
+              </span>
             </div>
           );
         })}

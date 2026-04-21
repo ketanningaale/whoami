@@ -50,10 +50,10 @@ export default function SysHeader({ theme, onCycleTheme }: SysHeaderProps) {
         <div className="sys-field">
           SYS.NAME &nbsp;: <span>SnøwOS v1.0.0</span>
         </div>
-        <div className="sys-field">
+        <div className="sys-field sys-hide-mobile">
           SYS.AUTH &nbsp;: <span className="green">GUEST_ACCESS_GRANTED</span>
         </div>
-        <div className="sys-field">
+        <div className="sys-field sys-hide-mobile">
           SYS.NODE &nbsp;: <span>{personalInfo.domain}</span>
         </div>
       </div>
@@ -61,7 +61,7 @@ export default function SysHeader({ theme, onCycleTheme }: SysHeaderProps) {
         <div className="sys-field">
           TIME &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <span>{time}</span>
         </div>
-        <div className="sys-field">
+        <div className="sys-field sys-hide-mobile">
           UPTIME &nbsp;&nbsp;&nbsp;: <span>{uptime}</span>
         </div>
         <div className="sys-field">
@@ -76,7 +76,7 @@ export default function SysHeader({ theme, onCycleTheme }: SysHeaderProps) {
           <span className="theme-dot" style={{ background: current.accent }} />
           <span className="theme-dot" style={{ background: current.heading }} />
           <span className="theme-dot" style={{ background: current.section }} />
-          {current.label}
+          <span className="theme-label">{current.label}</span>
         </button>
       </div>
     </header>
