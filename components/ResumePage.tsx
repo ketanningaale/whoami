@@ -1,7 +1,7 @@
 "use client";
 
 import { Fragment } from "react";
-import { experience, education, skills, recognitions } from "@/lib/data";
+import { experience, education, skills, recognitions, contributions } from "@/lib/data";
 
 export default function ResumePage() {
   return (
@@ -68,6 +68,35 @@ export default function ResumePage() {
             </div>
           ))}
         </div>
+      </div>
+
+      {/* ── Open Source ── */}
+      <div className="section-gap">
+        <div className="resume-header">// open source</div>
+        {contributions.map((c) => (
+          <div key={c.prUrl} className="contrib-block">
+            <div className="contrib-header">
+              <span className="contrib-project">{c.project}</span>
+              <span
+                className={`contrib-status ${c.status === "merged" ? "contrib-merged" : c.status === "open" ? "contrib-open" : "contrib-closed"}`}
+              >
+                ● {c.status.toUpperCase()}
+              </span>
+              <span className="contrib-date">{c.date}</span>
+            </div>
+            <div className="contrib-title">
+              <a href={c.prUrl} target="_blank" rel="noopener noreferrer">
+                {c.prTitle}
+              </a>
+            </div>
+            <div className="contrib-desc">{c.description}</div>
+            <div className="contrib-repo">
+              <a href={c.repo} target="_blank" rel="noopener noreferrer" className="contrib-repo-link">
+                ⌥ {c.repo.replace("https://github.com/", "")}
+              </a>
+            </div>
+          </div>
+        ))}
       </div>
 
       {/* ── Recognition ── */}

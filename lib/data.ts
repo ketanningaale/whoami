@@ -313,6 +313,31 @@ export const skills: SkillGroup[] = [
   },
 ];
 
+// ── Open Source Contributions ─────────────────
+
+export interface Contribution {
+  project: string;       // e.g. "Gensim"
+  repo: string;          // GitHub repo URL
+  prUrl: string;         // PR / issue URL
+  prTitle: string;
+  description: string;
+  status: "open" | "merged" | "closed";
+  date: string;
+}
+
+export const contributions: Contribution[] = [
+  {
+    project: "Gensim",
+    repo: "https://github.com/piskvorky/gensim",
+    prUrl: "https://github.com/piskvorky/gensim/pull/3650",
+    prTitle: "Add early validation for unsupported FastText model/loss types",
+    description:
+      "Addresses issue #3179. Previously, loading Facebook FastText binary files with unsupported configurations (supervised model, softmax loss, one-vs-all loss) would fail deep in the parsing process with cryptic errors. This PR adds early validation in _fasttext_bin.py immediately after the header is read — before vocabulary and matrices are loaded — raising a descriptive NotImplementedError for unsupported configs. Includes full test coverage for all three rejected configurations and all four valid combinations.",
+    status: "open",
+    date: "April 2026",
+  },
+];
+
 // ── Recommendations ───────────────────────────
 
 export interface Recommendation {
