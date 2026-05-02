@@ -16,7 +16,9 @@ export interface Project {
   role: string;
   stack: string[];
   status: "live" | "wip" | "archived";
-  link?: string;
+  link?: string;          // published paper / live demo
+  repo?: string;          // GitHub repository
+  prototype?: boolean;    // show PROTOTYPE badge
 }
 
 export interface Experience {
@@ -115,13 +117,21 @@ export const projects: Project[] = [
     name: "Blockchain Grievance System",
     filename: "BLOCKCHAIN_GRIEVANCE.app",
     size: "21.7kb",
-    modified: "2020-08",
+    modified: "2025-01",
     description:
-      "Decentralised grievance management system built on Hyperledger Fabric with hierarchical auto-escalation logic. Increased data security by 40% over traditional RDBMS approaches. Published in Springer (FICTA 2020) and awarded an Indian Patent (Publication No. 38/2019).",
-    role: "Lead Developer",
-    stack: ["Hyperledger Fabric", "Flask", "React", "PostgreSQL", "Blockchain"],
-    status: "archived",
+      "Production-ready decentralised grievance management system for educational institutes, built on Hyperledger Besu (IBFT 2.0 private network) and Ethereum Sepolia testnet. Students submit grievances — optionally anonymous via keccak256 identity hashing — and a multi-role committee votes to resolve, forward, or escalate. Unresolved cases auto-escalate through HoD → Principal via APScheduler. Every state transition is immutably recorded on-chain via three Solidity contracts (RoleManager, GrievanceSystem, GrievanceFactory). Backed by a FastAPI Python backend (Web3.py + Firebase Auth + Firestore + IPFS via Pinata + SendGrid), a Next.js 14 frontend with five role dashboards, and full CI/CD via GitHub Actions with Docker Compose. Originally published in Springer (FICTA 2020) and awarded an Indian Patent (No. 38/2019).",
+    role: "Lead Developer & Researcher",
+    stack: [
+      "Solidity 0.8", "Hyperledger Besu", "Hardhat", "OpenZeppelin",
+      "Python 3.11", "FastAPI", "Web3.py", "APScheduler",
+      "Firebase Auth", "Firestore", "IPFS (Pinata)", "SendGrid",
+      "Next.js 14", "TypeScript", "Tailwind CSS",
+      "Docker", "GitHub Actions", "Vercel", "Render.com",
+    ],
+    status: "live",
     link: "https://doi.org/10.1007/978-981-15-5788-0_20",
+    repo: "https://github.com/ketanningaale/blockchain_based_grievance_management_system",
+    prototype: true,
   },
   {
     id: "hmm-stocks",

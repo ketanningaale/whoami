@@ -84,10 +84,16 @@ export default function ProjectsPage({ onOpenCase }: ProjectsPageProps) {
                     <span className="fm-key">STATUS</span>
                     <span className={sc.cls}>{sc.dot} {sc.label}</span>
                   </div>
+                  {p.repo && (
+                    <div className="fm-row">
+                      <span className="fm-key">REPO</span>
+                      <a href={p.repo} target="_blank" rel="noopener noreferrer">[GitHub →]</a>
+                    </div>
+                  )}
                   {p.link && (
                     <div className="fm-row">
-                      <span className="fm-key">LINK</span>
-                      <a href={p.link} target="_blank" rel="noopener noreferrer">[OPEN →]</a>
+                      <span className="fm-key">PAPER</span>
+                      <a href={p.link} target="_blank" rel="noopener noreferrer">[Springer →]</a>
                     </div>
                   )}
                   <span

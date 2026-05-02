@@ -1,6 +1,6 @@
 "use client";
 
-import { projects, experience, education, skills } from "@/lib/data";
+import { projects } from "@/lib/data";
 
 interface CaseStudyPageProps {
   projectId: string;
@@ -8,9 +8,9 @@ interface CaseStudyPageProps {
 }
 
 const STATUS_CONFIG = {
-  live:     { label: "LIVE",     style: { color: "var(--accent)" }   },
-  wip:      { label: "WIP",      style: { color: "var(--orange)" }   },
-  archived: { label: "ARCHIVED", style: { color: "var(--dim)" }      },
+  live:     { label: "LIVE",     style: { color: "var(--live)" }    },
+  wip:      { label: "WIP",      style: { color: "var(--section)" } },
+  archived: { label: "ARCHIVED", style: { color: "var(--dim)" }     },
 };
 
 export default function CaseStudyPage({ projectId, onBack }: CaseStudyPageProps) {
@@ -48,7 +48,12 @@ export default function CaseStudyPage({ projectId, onBack }: CaseStudyPageProps)
       {/* Header */}
       <div className="section-gap">
         <div className="cs-num">{String(index).padStart(2, "0")} / {String(projects.length).padStart(2, "0")}</div>
-        <h1 className="cs-title">{project.name.toUpperCase()}</h1>
+        <div className="cs-title-row">
+          <h1 className="cs-title">{project.name.toUpperCase()}</h1>
+          {project.prototype && (
+            <span className="cs-proto-badge">◈ PROTOTYPE</span>
+          )}
+        </div>
         <div className="cs-tagline">{project.description.slice(0, 80)}…</div>
 
         <div className="cs-meta-row">
@@ -88,14 +93,34 @@ export default function CaseStudyPage({ projectId, onBack }: CaseStudyPageProps)
           ))}
         </p>
 
-        {project.link && (
+        {/* Links section */}
+        {(project.link || project.repo) && (
           <>
-            <div className="cs-section-title">// link</div>
-            <p>
-              <a href={project.link} target="_blank" rel="noopener noreferrer">
-                [OPEN →] {project.link}
-              </a>
-            </p>
+            <div className="cs-section-title">// links</div>
+            <div className="cs-links">
+              {project.repo && (
+                <a
+                  className="cs-link-btn"
+                  href={project.repo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span className="cs-link-icon">⌥</span>
+                  GitHub Repository
+                </a>
+              )}
+              {project.link && (
+                <a
+                  className="cs-link-btn"
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span className="cs-link-icon">↗</span>
+                  Published Paper (Springer FICTA 2020)
+                </a>
+              )}
+            </div>
           </>
         )}
       </div>
