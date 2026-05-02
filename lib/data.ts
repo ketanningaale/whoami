@@ -101,6 +101,26 @@ export const aboutParagraphs: string[] = [
 
 export const projects: Project[] = [
   {
+    id: "hanuman",
+    name: "H.A.N.U.M.A.N.",
+    filename: "H.A.N.U.M.A.N.assistant",
+    size: "31.2kb",
+    modified: "2025-04",
+    description:
+      "Honestly A Noble Unit Maintaining All Networks. A fully local, voice-first AI assistant inspired by J.A.R.V.I.S. — built to serve with devotion and treat the extraordinary as routine. Camera-based presence detection initiates interaction before you even speak. Face recognition greets you by name, gesture control (claps) toggles modes, and ambient noise sensing adapts output volume. Persistent memory across sessions via SQLite, smart home control via Home Assistant, web search, calendar, email, and file operations — all running entirely on-device. Primary LLM is Ollama (llama3.2:3b on M4, phi3:mini on RPi 5); Claude API handles vision tasks. Targets MacBook Pro M4 for development and Raspberry Pi 5 8GB for deployment.",
+    role: "Sole Developer",
+    stack: [
+      "Python", "Ollama (llama3.2)", "Claude API",
+      "faster-whisper", "edge-tts", "piper-tts",
+      "OpenCV", "face_recognition (dlib)", "FastAPI",
+      "React", "TypeScript", "Vite",
+      "Home Assistant", "SQLite", "Raspberry Pi 5",
+    ],
+    status: "wip",
+    repo: "https://github.com/ketanningaale/H.A.N.U.M.A.N",
+    prototype: true,
+  },
+  {
     id: "lidar-av",
     name: "LiDAR AV Localisation",
     filename: "LIDAR_AV_LOCALISATION.research",

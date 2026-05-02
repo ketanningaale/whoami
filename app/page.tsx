@@ -117,7 +117,7 @@ export default function App() {
 
     const CMDS: Record<string, () => string | null> = {
       help: () =>
-        `available commands:\n  home · experience · projects · education · about · resume\n  clear · email · help\n  theme <snow|gruvbox|tokyo|light>\n  [project ids]: lidar-av · blockchain-grievance · hmm-stocks · gdp-analysis · forest-fire · uav-quadcopter`,
+        `available commands:\n  home · experience · projects · education · about · resume\n  clear · email · help\n  theme <snow|gruvbox|tokyo|light>\n  [project ids]: hanuman · lidar-av · blockchain-grievance · hmm-stocks · gdp-analysis · forest-fire · uav-quadcopter`,
       home:       () => { navigateTo("home");       return null; },
       experience: () => { navigateTo("experience"); return null; },
       projects:   () => { navigateTo("projects");   return null; },
@@ -134,6 +134,7 @@ export default function App() {
       },
       clear: () => { setCmdResponse(""); return null; },
       // project shortcuts
+      "hanuman":             () => { openCase("hanuman");             return null; },
       "lidar-av":            () => { openCase("lidar-av");            return null; },
       "blockchain-grievance": () => { openCase("blockchain-grievance"); return null; },
       "hmm-stocks":          () => { openCase("hmm-stocks");          return null; },
